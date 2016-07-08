@@ -8,7 +8,7 @@ namespace XamarinForm
         public App()
         {
             // The root page of your application
-            MainPage = new MainPage();
+            MainPage = new MainPage();            
         }
 
         protected override void OnStart()

@@ -85,7 +85,7 @@ namespace XamarinForm.ViewModels
         private async Task ExecuteGetCommand()
         {
             var res = BusinessLibrary.Csla.EmployeerEdit.GetPersonEdit(Convert.ToInt32(getId));
-
+                        
             LastName = res.LastName;
             FirstName = res.FirstName;
             Email = res.Email;            

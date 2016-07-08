@@ -20,7 +20,7 @@ namespace XamarinForm.Pages
             var labelFName = GenerateDefaultLabel("First name");
             var labelLName = GenerateDefaultLabel("Last name");
             var labelEmail = GenerateDefaultLabel("Email");
-
+            
             var entryFName = new Entry();
             entryFName.SetBinding(Entry.TextProperty, EmployeerViewModel.FirstNamePropName);
 
@@ -39,6 +39,7 @@ namespace XamarinForm.Pages
             var btnAdd = new Button { Text = "Add" };
             btnAdd.SetBinding(Button.CommandProperty, EmployeerViewModel.AddCommandPropertyName);
 
+            
             stack.Children.Add(labelFName);
             stack.Children.Add(entryFName);
 
