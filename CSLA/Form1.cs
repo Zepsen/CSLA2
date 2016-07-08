@@ -32,7 +32,6 @@ namespace CSLA
             {
                 return GetEmployeerFromForm();
             }
-
             return null;
         }
 

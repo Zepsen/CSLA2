@@ -24,13 +24,25 @@ namespace BusinessLibrary.Repo
 
             database.CreateTable<Employeer>();
         }
+
         public IEnumerable<Employeer> GetItems()
         {
             return (from i in database.Table<Employeer>() select i).ToList();
         }
+
         public Employeer GetItem(int id)
         {
-            return database.Get<Employeer>(id);
+            Employeer emp = new Employeer{ Email = string.Empty, FirstName = string.Empty, LastName = string.Empty};
+            try
+            {
+                emp = database.Get<Employeer>(id);
+            }
+            catch (System.Exception)
+            {
+                
+            }
+
+            return emp;
         }
 
         public int DeleteItem(int id)
