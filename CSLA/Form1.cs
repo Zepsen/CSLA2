@@ -48,7 +48,8 @@ namespace CSLA
 
         private bool IsValidForm()
         {
-            return !string.IsNullOrEmpty(textBox_FirstName.Text)
+            return 
+                   !string.IsNullOrEmpty(textBox_FirstName.Text)
                 && !string.IsNullOrEmpty(textBox_LastName.Text)
                 && !string.IsNullOrEmpty(textBox_Email.Text);
         }

@@ -1,6 +1,5 @@
 ﻿using BusinessLibrary.Models;
 using SQLite;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using Xamarin.Forms;
@@ -27,18 +26,18 @@ namespace BusinessLibrary.Repo
         }
         public IEnumerable<Employeer> GetItems()
         {
-
             return (from i in database.Table<Employeer>() select i).ToList();
-
         }
         public Employeer GetItem(int id)
         {
             return database.Get<Employeer>(id);
         }
+
         public int DeleteItem(int id)
         {
             return database.Delete<Employeer>(id);
         }
+
         public int SaveItem(Employeer item)
         {
             if (item.Id != 0)
