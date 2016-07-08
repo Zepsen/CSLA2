@@ -47,7 +47,7 @@ namespace XamarinForm.Pages
 
             stack.Children.Add(labelEmail);
             stack.Children.Add(entryEmail);
-                        
+                                    
             stack.Children.Add(entryId);
 
             stack.Children.Add(btnGet);
