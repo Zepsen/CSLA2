@@ -21,16 +21,16 @@ namespace XamarinForm.Pages
             var labelLName = GenerateDefaultLabel("Last name");
             var labelEmail = GenerateDefaultLabel("Email");
 
-            var entryFName = new Entry();
+            var entryFName = new Entry() { HorizontalTextAlignment = TextAlignment.Center };
             entryFName.SetBinding(Entry.TextProperty, EmployeerViewModel.FirstNamePropName);
 
-            var entryLName = new Entry();
+            var entryLName = new Entry() { HorizontalTextAlignment = TextAlignment.Center };
             entryLName.SetBinding(Entry.TextProperty, EmployeerViewModel.LastNamePropName);
 
-            var entryEmail = new Entry();
+            var entryEmail = new Entry() { HorizontalTextAlignment = TextAlignment.Center };
             entryEmail.SetBinding(Entry.TextProperty, EmployeerViewModel.EmailPropName);
 
-            var entryId = new Entry();
+            var entryId = new Entry() { HorizontalTextAlignment = TextAlignment.Center };
             entryId.SetBinding(Entry.TextProperty, EmployeerViewModel.IdPropName);
 
             var btnGet = GetDefaultButton("Get");
