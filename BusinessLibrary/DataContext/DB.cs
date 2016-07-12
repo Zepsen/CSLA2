@@ -1,7 +1,5 @@
 ﻿using BusinessLibrary.DI;
-
 using BusinessLibrary.Models;
-
 using BusinessLibrary.Repo;
 
 namespace BusinessLibrary.DataContext

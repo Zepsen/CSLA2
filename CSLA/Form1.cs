@@ -46,12 +46,11 @@ namespace CSLA
             {
                 return GetEmployeerFromForm();
             }
-
             return null;
         }
 
         private Employeer GetEmployeerFromForm()
-        {
+        { 
             return new Employeer
             {
                 FirstName = textBox_FirstName.Text,
@@ -62,8 +61,7 @@ namespace CSLA
 
         private bool IsValidForm()
         {
-            return 
-                   !string.IsNullOrEmpty(textBox_FirstName.Text)
+            return !string.IsNullOrEmpty(textBox_FirstName.Text) 
                 && !string.IsNullOrEmpty(textBox_LastName.Text)
                 && !string.IsNullOrEmpty(textBox_Email.Text);
         }

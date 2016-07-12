@@ -3,7 +3,6 @@ using BusinessLibrary.Factory;
 using BusinessLibrary.Models;
 using Csla;
 using System;
-using System.Data.SqlClient;
 
 namespace BusinessLibrary.Csla
 {

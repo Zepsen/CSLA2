@@ -1,7 +1,6 @@
 ﻿using BusinessLibrary.Models;
 using System;
 using System.ComponentModel;
-using System.Threading.Tasks;
 using Xamarin.Forms;
 
 
@@ -30,6 +29,7 @@ namespace XamarinForm.ViewModels
                 OnPropertyChanged(nameof(Employeer.FirstName));
             }
         }
+
         public const string LastNamePropName = "LastName";
         public string LastName
         {
@@ -43,6 +43,7 @@ namespace XamarinForm.ViewModels
                 OnPropertyChanged(nameof(Employeer.LastName));
             }
         }
+
         public const string EmailPropName = "Email";
         public string Email
         {
@@ -81,13 +82,11 @@ namespace XamarinForm.ViewModels
                 return getCommand ?? (getCommand = new Command(() => ExecuteGetCommand()));
             }
         }
-
         private void ExecuteGetCommand()
         {
             var employeer = BusinessLibrary.Csla.EmployeerEdit.GetPersonEdit(Convert.ToInt32(getId));
             SetEmployeerToForm(employeer);
         }
-
         private void SetEmployeerToForm(BusinessLibrary.Csla.EmployeerEdit employeer)
         {
             LastName = employeer.LastName;
@@ -104,7 +103,6 @@ namespace XamarinForm.ViewModels
                 return addCommand ?? (addCommand = new Command(() => ExecuteAddCommand()));
             }
         }
-
         private void ExecuteAddCommand()
         {
             if (BusinessLibrary.Csla.EmployeerEdit.NewPersonEdit(_employeer))
@@ -112,7 +110,6 @@ namespace XamarinForm.ViewModels
                 ClearForm();
             };
         }
-
         private void ClearForm()
         {
             FirstName = string.Empty;
