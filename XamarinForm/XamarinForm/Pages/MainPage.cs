@@ -15,12 +15,12 @@ namespace XamarinForm.Pages
 
         private StackLayout GenerateMainPage()
         {
-            var stack = new StackLayout();
+            var stack = new StackLayout { Padding = new Thickness(50, 0), Spacing = 10 };
 
             var labelFName = GenerateDefaultLabel("First name");
             var labelLName = GenerateDefaultLabel("Last name");
             var labelEmail = GenerateDefaultLabel("Email");
-            
+
             var entryFName = new Entry();
             entryFName.SetBinding(Entry.TextProperty, EmployeerViewModel.FirstNamePropName);
 
@@ -33,13 +33,13 @@ namespace XamarinForm.Pages
             var entryId = new Entry();
             entryId.SetBinding(Entry.TextProperty, EmployeerViewModel.IdPropName);
 
-            var btnGet = new Button { Text = "Get" };
+            var btnGet = GetDefaultButton("Get");
             btnGet.SetBinding(Button.CommandProperty, EmployeerViewModel.GetCommandPropertyName);
 
-            var btnAdd = new Button { Text = "Add" };
+            var btnAdd = GetDefaultButton("Add");
             btnAdd.SetBinding(Button.CommandProperty, EmployeerViewModel.AddCommandPropertyName);
 
-            
+
             stack.Children.Add(labelFName);
             stack.Children.Add(entryFName);
 
@@ -48,13 +48,23 @@ namespace XamarinForm.Pages
 
             stack.Children.Add(labelEmail);
             stack.Children.Add(entryEmail);
-                                    
+
             stack.Children.Add(entryId);
 
             stack.Children.Add(btnGet);
             stack.Children.Add(btnAdd);
-            
+
             return stack;
+        }
+
+        private static Button GetDefaultButton(string text = "Button")
+        {
+            return new Button
+            {
+                Text = text,
+                BorderColor = DefaultStyleForApp.FontColor,
+                TextColor = DefaultStyleForApp.FontColor                               
+            };
         }
 
         private Label GenerateDefaultLabel(string name = "Default label")
@@ -63,7 +73,8 @@ namespace XamarinForm.Pages
             {
                 Text = name,
                 HorizontalTextAlignment = TextAlignment.Center,
-                FontSize = DefaultStyleForApp.FontSize        
+                FontSize = DefaultStyleForApp.FontSize,
+                TextColor = DefaultStyleForApp.FontColor
             };
         }
 
