@@ -1,5 +1,7 @@
 ﻿{
   "dependencies": {
+    "AWSSDK.CognitoIdentity": "3.1.1.1",
+    "AWSSDK.CognitoSync": "3.1.1.4",
     "CSLA-XamarinForms": "4.6.401",
     "Microsoft.NETCore.UniversalWindowsPlatform": "5.0.0",
     "sqlite-net-pcl": "1.1.2",

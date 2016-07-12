@@ -2,6 +2,7 @@
 using BusinessLibrary.Models;
 using BusinessLibrary.Repo;
 
+
 namespace BusinessLibrary.DataContext
 {
     class DB : IEmployeer
@@ -10,9 +11,9 @@ namespace BusinessLibrary.DataContext
         
         public DB()
         {
-            repo = new EmployeerRepo("employeer.db");
+            repo = new EmployeerRepo("employeer.db");            
         }
-         
+
         public bool CreateEmployeer(Employeer employeer)
         {
             try
@@ -22,13 +23,14 @@ namespace BusinessLibrary.DataContext
             }
             catch (System.Exception ex)
             {
-                return false;                
+                return false;
             }
         }
 
         public Employeer GetEmployeer(int id)
-        {            
-            return repo.GetItem(id);                               
-        }    
+        {                 
+            return repo.GetItem(id);
+        }
+        
     }
 }
