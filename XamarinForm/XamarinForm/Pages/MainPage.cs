@@ -38,8 +38,7 @@ namespace XamarinForm.Pages
 
             var btnAdd = GetDefaultButton("Add");
             btnAdd.SetBinding(Button.CommandProperty, EmployeerViewModel.AddCommandPropertyName);
-
-
+            
             stack.Children.Add(labelFName);
             stack.Children.Add(entryFName);
 
