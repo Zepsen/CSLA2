@@ -57,21 +57,21 @@ namespace XamarinForm.Pages
             return stack;
         }
 
-        private static Button GetDefaultButton(string text = "Button")
+        private static Button GetDefaultButton(string btnName = "Button")
         {
             return new Button
             {
-                Text = text,
+                Text = btnName,
                 BorderColor = DefaultStyleForApp.FontColor,
                 TextColor = DefaultStyleForApp.FontColor                               
             };
         }
 
-        private Label GenerateDefaultLabel(string name = "Default label")
+        private Label GenerateDefaultLabel(string labelName = "Default label")
         {
             return new Label
             {
-                Text = name,
+                Text = labelName,
                 HorizontalTextAlignment = TextAlignment.Center,
                 FontSize = DefaultStyleForApp.FontSize,
                 TextColor = DefaultStyleForApp.FontColor
