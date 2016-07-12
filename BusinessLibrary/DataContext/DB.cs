@@ -31,12 +31,7 @@ namespace BusinessLibrary.DataContext
         public Employeer GetEmployeer(int id)
         {            
             return repo.GetItem(id);                               
-        }   
-             
-        private void GetSqlLiteConnection()
-        {
-            
-            
-        }
+        }               
+  
     }
 }

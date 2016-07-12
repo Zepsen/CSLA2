@@ -32,7 +32,13 @@ namespace BusinessLibrary.Repo
 
         public Employeer GetItem(int id)
         {
-            Employeer emp = new Employeer{ Email = string.Empty, FirstName = string.Empty, LastName = string.Empty};
+            var emp = new Employeer
+            {
+                Email = string.Empty,
+                FirstName = string.Empty,
+                LastName = string.Empty
+            };
+
             try
             {
                 emp = database.Get<Employeer>(id);

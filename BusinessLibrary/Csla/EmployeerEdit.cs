@@ -44,9 +44,16 @@ namespace BusinessLibrary.Csla
             return DataPortal.Fetch<EmployeerEdit>(id);
         }
 #endif
-        public static EmployeerEdit NewPersonEdit(Employeer employeer)
+        public static bool NewPersonEdit(Employeer employeer)
         {
-            return DataPortal.Create<EmployeerEdit>(employeer);
+            var emp = DataPortal.Create<EmployeerEdit>(employeer);
+
+            if (emp != null)
+            {
+                return true;
+            }
+
+            return false;
         }
 
         private void DataPortal_Create(Employeer employeer)

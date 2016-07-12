@@ -78,17 +78,21 @@ namespace XamarinForm.ViewModels
         {
             get
             {
-                return getCommand ?? (getCommand = new Command(async () => await ExecuteGetCommand()));
+                return getCommand ?? (getCommand = new Command(() => ExecuteGetCommand()));
             }
         }
 
-        private async Task ExecuteGetCommand()
+        private void ExecuteGetCommand()
         {
-            var res = BusinessLibrary.Csla.EmployeerEdit.GetPersonEdit(Convert.ToInt32(getId));
-                        
-            LastName = res.LastName;
-            FirstName = res.FirstName;
-            Email = res.Email;            
+            var employeer = BusinessLibrary.Csla.EmployeerEdit.GetPersonEdit(Convert.ToInt32(getId));
+            SetEmployeerToForm(employeer);
+        }
+
+        private void SetEmployeerToForm(BusinessLibrary.Csla.EmployeerEdit employeer)
+        {
+            LastName = employeer.LastName;
+            FirstName = employeer.FirstName;
+            Email = employeer.Email;
         }
 
         private Command addCommand;
@@ -97,13 +101,23 @@ namespace XamarinForm.ViewModels
         {
             get
             {
-                return addCommand ?? (addCommand = new Command(async () => await ExecuteAddCommand()));
+                return addCommand ?? (addCommand = new Command(() => ExecuteAddCommand()));
             }
         }
 
-        private async Task ExecuteAddCommand()
-        {        
-            var res = BusinessLibrary.Csla.EmployeerEdit.NewPersonEdit(_employeer);
+        private void ExecuteAddCommand()
+        {
+            if (BusinessLibrary.Csla.EmployeerEdit.NewPersonEdit(_employeer))
+            {
+                ClearForm();
+            };
+        }
+
+        private void ClearForm()
+        {
+            FirstName = string.Empty;
+            LastName = string.Empty;
+            Email = string.Empty;
         }
 
         protected void OnPropertyChanged(string propName)
