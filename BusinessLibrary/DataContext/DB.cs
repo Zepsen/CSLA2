@@ -6,8 +6,8 @@ namespace BusinessLibrary.DataContext
 {
     class DB : IEmployeer
     {
-        private EmployeerRepo repo;
-        
+        private EmployeerRepo repo;        
+
         public DB()
         {            
             repo = new EmployeerRepo("employeer.db");
@@ -20,16 +20,15 @@ namespace BusinessLibrary.DataContext
                 repo.SaveItem(employeer);
                 return true;
             }
-            catch (System.Exception ex)
+            catch (System.Exception)
             {
                 return false;
             }
         }
 
         public Employeer GetEmployeer(int id)
-        {
+        {            
             return repo.GetItem(id);
         }       
-
     }
 }

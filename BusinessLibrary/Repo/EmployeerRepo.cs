@@ -32,23 +32,27 @@ namespace BusinessLibrary.Repo
 
         public Employeer GetItem(int id)
         {
-            var emp = new Employeer
-            {
-                Email = string.Empty,
-                FirstName = string.Empty,
-                LastName = string.Empty
-            };
-
+            Employeer emp = GetNewEmployeer();
             try
             {
                 emp = database.Get<Employeer>(id);
             }
             catch (System.Exception)
             {
-                
+
             }
 
             return emp;
+        }
+
+        private static Employeer GetNewEmployeer()
+        {
+            return new Employeer
+            {
+                Email = string.Empty,
+                FirstName = string.Empty,
+                LastName = string.Empty
+            };
         }
 
         public int DeleteItem(int id)
