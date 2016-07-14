@@ -14,6 +14,7 @@ namespace BusinessLibrary.Factory
                 return (T)Activator.CreateInstance(dalType);
             else
                 throw new Exception("Object type not found in factory");
+        
         }
     }
 }
