@@ -2,7 +2,7 @@
 using System;
 using System.ComponentModel;
 using Xamarin.Forms;
-
+using XamarinForm.Pages.DefaultStyle;
 
 namespace XamarinForm.ViewModels
 {
@@ -30,6 +30,21 @@ namespace XamarinForm.ViewModels
             }
         }
 
+        private Color firstNameDB = Color.White;
+        public const string FirstNameBCPropName = "FirstNameBC";
+        public Color FirstNameBC
+        {
+            get
+            {
+                return firstNameDB;
+            }
+            set
+            {
+                firstNameDB = value;
+                OnPropertyChanged("FirstNameBC");
+            }
+        }
+
         public const string LastNamePropName = "LastName";
         public string LastName
         {
@@ -44,6 +59,21 @@ namespace XamarinForm.ViewModels
             }
         }
 
+        private Color lastNameDB = Color.White;
+        public const string LastNameBCPropName = "LastNameBC";
+        public Color LastNameBC
+        {
+            get
+            {
+                return lastNameDB;
+            }
+            set
+            {
+                lastNameDB = value;
+                OnPropertyChanged("LastNameBC");
+            }
+        }
+
         public const string EmailPropName = "Email";
         public string Email
         {
@@ -55,6 +85,21 @@ namespace XamarinForm.ViewModels
             {
                 _employeer.Email = value;
                 OnPropertyChanged(nameof(Employeer.Email));
+            }
+        }
+
+        private Color emailDB = Color.White;
+        public const string EmailBCPropName = "EmailBC";
+        public Color EmailBC
+        {
+            get
+            {
+                return emailDB;
+            }
+            set
+            {
+                emailDB = value;
+                OnPropertyChanged("EmailBC");
             }
         }
 
@@ -85,7 +130,12 @@ namespace XamarinForm.ViewModels
         private void ExecuteGetCommand()
         {
             var employeer = BusinessLibrary.Csla.EmployeerEdit.GetPersonEdit(Convert.ToInt32(getId));
-            SetEmployeerToForm(employeer);
+            if(employeer != null)
+            {
+                SetDefaultColorToForm();
+                SetEmployeerToForm(employeer);
+            }
+            
         }
         private void SetEmployeerToForm(BusinessLibrary.Csla.EmployeerEdit employeer)
         {
@@ -105,16 +155,51 @@ namespace XamarinForm.ViewModels
         }
         private void ExecuteAddCommand()
         {
+            if (ValidateForm())
+            {
+                TryAddPerson();
+            }
+            else
+            {
+                ValidateColorForm();
+            }
+        }
+
+        private void TryAddPerson()
+        {
             if (BusinessLibrary.Csla.EmployeerEdit.NewPersonEdit(_employeer))
             {
+                SetDefaultColorToForm();
                 ClearForm();
             };
         }
+
         private void ClearForm()
         {
             FirstName = string.Empty;
             LastName = string.Empty;
             Email = string.Empty;
+        }
+
+        private bool ValidateForm()
+        {
+            return !string.IsNullOrEmpty(_employeer.FirstName)
+                && !string.IsNullOrEmpty(_employeer.LastName)
+                && !string.IsNullOrEmpty(_employeer.Email);
+        }
+
+        private void ValidateColorForm()
+        {
+            FirstNameBC = string.IsNullOrEmpty(_employeer.FirstName) ? DefaultStyleForApp.ErrorColor : DefaultStyleForApp.SuccessColor;
+            LastNameBC = string.IsNullOrEmpty(_employeer.LastName) ? DefaultStyleForApp.ErrorColor : DefaultStyleForApp.SuccessColor;
+            EmailBC = string.IsNullOrEmpty(_employeer.Email) ? DefaultStyleForApp.ErrorColor : DefaultStyleForApp.SuccessColor;
+        }
+
+        private void SetDefaultColorToForm()
+        {
+            FirstNameBC = Color.White;
+            LastNameBC = Color.White;
+            EmailBC = Color.White;
         }
 
         protected void OnPropertyChanged(string propName)

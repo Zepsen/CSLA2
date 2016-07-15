@@ -11,6 +11,7 @@ namespace XamarinForm.Pages
             var stack = GenerateMainPage();
             BindingContext = new EmployeerViewModel();
             Content = stack;
+            Title = "CSLA";            
         }
 
         private StackLayout GenerateMainPage()
@@ -23,12 +24,15 @@ namespace XamarinForm.Pages
 
             var entryFName = new Entry() { HorizontalTextAlignment = TextAlignment.Center };
             entryFName.SetBinding(Entry.TextProperty, EmployeerViewModel.FirstNamePropName);
+            entryFName.SetBinding(Entry.BackgroundColorProperty, EmployeerViewModel.FirstNameBCPropName);
 
             var entryLName = new Entry() { HorizontalTextAlignment = TextAlignment.Center };
             entryLName.SetBinding(Entry.TextProperty, EmployeerViewModel.LastNamePropName);
+            entryLName.SetBinding(Entry.BackgroundColorProperty, EmployeerViewModel.LastNameBCPropName);
 
             var entryEmail = new Entry() { HorizontalTextAlignment = TextAlignment.Center };
             entryEmail.SetBinding(Entry.TextProperty, EmployeerViewModel.EmailPropName);
+            entryEmail.SetBinding(Entry.BackgroundColorProperty, EmployeerViewModel.EmailBCPropName);
 
             var entryId = new Entry() { HorizontalTextAlignment = TextAlignment.Center };
             entryId.SetBinding(Entry.TextProperty, EmployeerViewModel.IdPropName);
@@ -52,7 +56,7 @@ namespace XamarinForm.Pages
 
             stack.Children.Add(btnGet);
             stack.Children.Add(btnAdd);
-
+                        
             return stack;
         }
 

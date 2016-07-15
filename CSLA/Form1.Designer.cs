@@ -106,6 +106,7 @@
             this.btn_Get.TabIndex = 8;
             this.btn_Get.Text = "Get";
             this.btn_Get.UseVisualStyleBackColor = true;
+            this.btn_Get.Visible = false;
             this.btn_Get.Click += new System.EventHandler(this.btn_Get_Click);
             // 
             // num_Id
@@ -119,6 +120,7 @@
             0,
             0,
             0});
+            this.num_Id.Visible = false;
             // 
             // Form1
             // 
@@ -135,7 +137,7 @@
             this.Controls.Add(this.label_FirstName);
             this.Controls.Add(this.btn_Get);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "CSLA";
             ((System.ComponentModel.ISupportInitialize)(this.num_Id)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
