@@ -9,6 +9,7 @@ namespace BusinessLibrary.Csla
     [Serializable]
     public class EmployeerEdit : BusinessBase<EmployeerEdit>
     {
+        private static bool createRes = false;
         public static readonly PropertyInfo<int> IdProperty = RegisterProperty<int>(i => i.Id);
         public int Id
         {
@@ -46,19 +47,13 @@ namespace BusinessLibrary.Csla
         public static bool NewPersonEdit(Employeer employeer)
         {
             var emp = DataPortal.Create<EmployeerEdit>(employeer);
-
-            if (emp != null)
-            {
-                return true;
-            }
-
-            return false;
+            return createRes;
         }
 
         private void DataPortal_Create(Employeer employeer)
         {
             var dal = EmployeerFactory.GetDal<IEmployeer>();
-            var res = dal.CreateEmployeer(employeer);
+            createRes = dal.CreateEmployeer(employeer);            
         }
 
         private void DataPortal_Fetch(int id)

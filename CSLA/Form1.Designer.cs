@@ -106,7 +106,6 @@
             this.btn_Get.TabIndex = 8;
             this.btn_Get.Text = "Get";
             this.btn_Get.UseVisualStyleBackColor = true;
-            this.btn_Get.Visible = false;
             this.btn_Get.Click += new System.EventHandler(this.btn_Get_Click);
             // 
             // num_Id
@@ -120,7 +119,6 @@
             0,
             0,
             0});
-            this.num_Id.Visible = false;
             // 
             // Form1
             // 

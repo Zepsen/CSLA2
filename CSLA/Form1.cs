@@ -1,6 +1,7 @@
 ﻿using BusinessLibrary.Models;
 using System;
 using System.Windows.Forms;
+using System.Drawing;
 
 namespace CSLA
 {
@@ -14,8 +15,8 @@ namespace CSLA
         private void btn_Add_Click(object sender, EventArgs e)
         {
             var emloyeer = GetEmployeerIfValid();
-            if(BusinessLibrary.Csla.EmployeerEdit.NewPersonEdit(emloyeer))
-            {
+            if (BusinessLibrary.Csla.EmployeerEdit.NewPersonEdit(emloyeer))
+            {                
                 ClearForm();
             };
         }
@@ -30,7 +31,11 @@ namespace CSLA
         private void btn_Get_Click(object sender, EventArgs e)
         {
             var employeer = BusinessLibrary.Csla.EmployeerEdit.GetPersonEdit(Convert.ToInt32(num_Id.Value));
-            SetEmployeerToForm(employeer);
+            if (employeer != null)
+            {
+                ClearColorForm();
+                SetEmployeerToForm(employeer);
+            }
         }
 
         private void SetEmployeerToForm(BusinessLibrary.Csla.EmployeerEdit employeer)
@@ -44,8 +49,14 @@ namespace CSLA
         {
             if (IsValidForm())
             {
+                ClearColorForm();
                 return GetEmployeerFromForm();
             }
+            else
+            {
+                ValidateColorToForm();
+            }
+
             return null;
         }
 
@@ -64,6 +75,20 @@ namespace CSLA
             return !string.IsNullOrEmpty(textBox_FirstName.Text) 
                 && !string.IsNullOrEmpty(textBox_LastName.Text)
                 && !string.IsNullOrEmpty(textBox_Email.Text);
+        }
+
+        private void ValidateColorToForm()
+        {
+            textBox_FirstName.BackColor = string.IsNullOrEmpty(textBox_FirstName.Text) ? Color.Red : Color.Green;
+            textBox_LastName.BackColor = string.IsNullOrEmpty(textBox_LastName.Text) ? Color.Red : Color.Green;
+            textBox_Email.BackColor = string.IsNullOrEmpty(textBox_Email.Text) ? Color.Red : Color.Green;
+        }
+
+        private void ClearColorForm()
+        {
+            textBox_FirstName.BackColor = Color.White;
+            textBox_LastName.BackColor = Color.White;
+            textBox_Email.BackColor = Color.White;
         }
     }
 }
